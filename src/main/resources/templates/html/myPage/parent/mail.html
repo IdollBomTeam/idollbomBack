@@ -10,8 +10,7 @@
     <link rel="stylesheet" th:href="@{/css/modal/modalstyle.css}" />
     <link rel="stylesheet" th:href="@{/css/modal/letter.css}" />
     <script th:src="@{/js/mail.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>iDollbom_마이페이지</title>
 </head>
 
@@ -41,7 +40,7 @@
                         <a th:href="@{/ParentMyPage/myPost}">내가쓴 게시글</a>
                     </div>
                     <div class="menu-bar-option">
-                        <a th:href="@{/ParentMyPage/askPage}">내 문의</a>
+                        <a th:href="@{/ParentMyPage/myAsk}"></a>
                     </div>
                     <div class="menu-bar-option">
                         <a th:href="@{/ParentMyPage/Review}">내 리뷰</a>
@@ -51,14 +50,20 @@
                         <a th:href="@{/ParentMyPage/myPayment}">결제 내역</a>
                     </div>
                     <div class="menu-bar-option">
-                        <p>쪽지함</p>
+                        <a th:href="@{/ParentMyPage/myNote}">쪽지함</a>
                     </div>
                     <!-- 프로필 -->
-                    <div class="myprofile" th:object="${parentInfo}">
+                    <div class="myprofile">
                         <div class="profileimage">
-                            <img  src="#" class="img" id="profile" th:src="*{parentProfileImageUrl}">
+                            <img src="../../images/ff581d78778b7.png" alt="profileImage" class="img">
                         </div>
-                        <div class="Nickname" th:text="*{parentNickname}">
+                        <div class="Nickname">
+                            닉네임
+                        </div>
+                        <div class="buttonbox">
+                            <a href="#">
+                                <button class="btn-block" type="button">로그아웃</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -109,9 +114,9 @@
             </div>
         </div>
     </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div id="footer" th:replace="~{/layout/footer :: footer}"></div>
 
 </body>
-<script th:src="@{/js/motion.js}"></script>
+
 </html>

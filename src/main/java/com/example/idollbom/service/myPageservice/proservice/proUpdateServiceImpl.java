@@ -62,7 +62,7 @@ public class proUpdateServiceImpl implements proUpdateService {
         System.out.println(imgName);
 
         try {
-            Path directoryPath = Paths.get("src/main/resources/static/backImage/pro/profile");
+            Path directoryPath = Paths.get("src/main/resources/static/backImage/parent/profile");
             if (!Files.exists(directoryPath)) {
                 Files.createDirectories(directoryPath);
             }
@@ -71,7 +71,7 @@ public class proUpdateServiceImpl implements proUpdateService {
             Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
             // url 지정
-            String imageUrl = "/backImage/pro/profile/" + imgName;
+            String imageUrl = "/backImage/parent/profile/" + imgName;
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();

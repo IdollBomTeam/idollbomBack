@@ -42,7 +42,7 @@ public class ParentMypageController {
     private final reservationService reservationService;
     private final reservationDateService reservationDateService;
     private final ParentMapper parentMapper;
-
+    private final ClassListService classListService;
 
     public void getNoteCount(Model model){
         // 현재 로그인한 부모 pk 가져오기
@@ -65,11 +65,10 @@ public class ParentMypageController {
     public String getKids(Model model){
         // 쪽지 목록개수 view에 전달
         getNoteCount(model);
+
         List<kidVO> kids = kidsService.selectKidsList();
         model.addAttribute("kid", new kidDTO());
         model.addAttribute("kids", kids);
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/myKids";
     }
 
@@ -109,8 +108,6 @@ public class ParentMypageController {
 
         List<reportVO> reportUser = reportService.selectReportList();
         model.addAttribute("reportUser", reportUser);
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/hateUser";
     }
 
@@ -122,8 +119,6 @@ public class ParentMypageController {
 
         List<askVO> askList = askService.selectAskList();
         model.addAttribute("askList",askList );
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/myAsk";
     }
 
@@ -135,8 +130,6 @@ public class ParentMypageController {
 
         List<myPostVO> postList = myPostService.selectPostList();
         model.addAttribute("myPost", postList);
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/myPost";
     }
 
@@ -152,8 +145,6 @@ public class ParentMypageController {
 //
 //        }
         model.addAttribute("ReviewList", reviewList);
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/myReview";
     }
 
@@ -167,8 +158,6 @@ public class ParentMypageController {
 
         model.addAttribute("saveClass", classList);
         log.info(String.valueOf(classList.size()));
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/myFavoriteClass";
     }
 
@@ -180,8 +169,6 @@ public class ParentMypageController {
 
         List<mailDTO> noteList = noteService.selectAllMyNote();
         model.addAttribute("myNotes", noteList);
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/mail";
     }
 
@@ -193,7 +180,6 @@ public class ParentMypageController {
 
        ParentVO parentInfo = parentInfoService.selectParentInfo();
        model.addAttribute("parentInfo", parentInfo);
-
         return "html/myPage/parent/correction";
     }
 
@@ -201,7 +187,6 @@ public class ParentMypageController {
     @PostMapping("/updateMyInfo")
     public String updateParentInfo(@ModelAttribute ParentDTO parentDTO) {
         parentInfoService.update(parentDTO);
-
         return "redirect:/ParentMyPage/myInformation";
     }
 
@@ -243,8 +228,6 @@ public class ParentMypageController {
         model.addAttribute("review", new ReviewDTO());
         model.addAttribute("Mypayment",  payment);
         log.info("Review object: " + model.getAttribute("Mypayment"));
-        ParentVO parentInfo = parentInfoService.selectParent();
-        model.addAttribute("parentInfo", parentInfo );
         return "html/myPage/parent/Payment";
     }
 
@@ -256,7 +239,6 @@ public class ParentMypageController {
 
         ReservationDateVO reservationDate = reservationDateService.selectReservationDate(reviewDTO.getClassNumber());
         reservationService.reviewUpdate(reservationDate.getReservationDateNumber());
-
         return "redirect:/ParentMyPage/myPayment";
     }
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Form</title>
     <link rel="stylesheet" th:href="@{/css/login/proRegisterPage.css}">
-    <link rel="stylesheet" th:href="@{/css/modal/profile-modify.css}" />
 </head>
 <body>
 
@@ -37,11 +36,11 @@
         <div class="line"></div>
     </div>
     <!-- 폼로그인 -->
-    <form id="signupForm" method="post" th:object="${pro}" th:action="@{/user/proSignup}" enctype="multipart/form-data">
+    <form id="signupForm" method="post" th:object="${pro}" th:action="@{/user/proSignup}">
 
         <input type="text" th:field="*{proName}" id="username" placeholder="이름" required>
 
-        <input type="text" th:field="*{proNickname}" id="nickname" placeholder="별명" required>
+        <input type="text" th:field="*{proNickName}" id="nickname" placeholder="별명" required>
 
         <!-- 틀리면 나올 경고 -->
         <div class="error-message" style="display: none;" id="nicknameError">
@@ -69,17 +68,31 @@
             <img src="../../images/warning.png" alt="Warning" class="error-icon"> 비밀번호가 일치하지 않습니다
         </div>
 
-        <input type="file" class="file" name="file" />
+        <input type="file" class="file" th:field="*{proFile}" name="proFile" />
 
         <div class="form">
             <textarea class="myprofile" th:field="*{proIntro}" type="email" id="proIntro" name="proIntro" placeholder="Email" required></textarea>
         </div>
 
-        <div class="reset" id="pro-add">
-            <div>프로필</div>
-            <input type="file" id="input-file" multiple="multiple" name="proImg"/>
+        <!-- 서비스 이용약관 -->
+        <div class="checkbox">
+            <label class="checkbox-container">
+                <input type="checkbox" id="service-terms" name="service-terms">
+                <span class="checkbox-label">[필수]서비스 이용약관</span>
+            </label>
+            <label class="checkbox-container">
+                <input type="checkbox" id="privacy-policy" name="privacy-policy">
+                <span class="checkbox-label">[필수]개인정보 수집 · 이용 동의</span>
+            </label>
+            <label class="checkbox-container">
+                <input type="checkbox" id="third-party" name="third-party">
+                <span class="checkbox-label">[필수]제3자 마케팅 정보 수신 동의</span>
+            </label>
+            <label class="checkbox-container">
+                <input type="checkbox" id="age-confirmation" name="age-confirmation">
+                <span class="checkbox-label">[필수] 14세 이상입니다</span>
+            </label>
         </div>
-
         <!-- 등록 -->
         <button type="submit" class="signup-button">SIGN UP</button>
         <!-- sign in 으로 이동 -->

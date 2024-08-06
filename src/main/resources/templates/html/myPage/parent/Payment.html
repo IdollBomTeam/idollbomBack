@@ -39,24 +39,31 @@
                         <a th:href="@{/ParentMyPage/myPost}">내가쓴 게시글</a>
                     </div>
                     <div class="menu-bar-option">
-                        <a th:href="@{/ParentMyPage/askPage}">내 문의</a>
+                        <p>내 문의</p>
                     </div>
                     <div class="menu-bar-option">
                         <a th:href="@{/ParentMyPage/Review}">내 리뷰</a>
                     </div>
                     <hr class="custom-hr">
                     <div class="menu-bar-option">
-                        <p>결제 내역</p>
+                        <a th:href="@{/ParentMyPage/myPayment}">결제 내역</a>
                     </div>
                     <div class="menu-bar-option">
                         <a th:href="@{/ParentMyPage/myNote}">쪽지함</a>
                     </div>
                     <!-- 프로필 -->
-                    <div class="myprofile" th:object="${parentInfo}">
+                    <div class="myprofile">
                         <div class="profileimage">
-                            <img  src="#" class="img" id="profile" th:src="*{parentProfileImageUrl}">
+                            <img src="/images/ff581d78778b7.png" alt="profileImage" class="img">
                         </div>
-                        <div class="Nickname" th:text="*{parentNickname}">
+                        <div class="Nickname">
+                            닉네임
+                        </div>
+
+                        <div class="buttonbox">
+                            <a href="#">
+                                <button class="btn-block" type="button">로그아웃</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -139,9 +146,7 @@
                 </div>
             </div>
         </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div id="footer" th:replace="~{/layout/footer :: footer}"></div>
 </body>
 <script th:src="@{/js/review.js}"></script>
-<script th:src="@{/js/motion.js}"></script>
 </html>

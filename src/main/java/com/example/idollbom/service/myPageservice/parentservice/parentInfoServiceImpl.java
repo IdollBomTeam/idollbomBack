@@ -128,14 +128,7 @@ public class parentInfoServiceImpl implements parentInfoService {
     }
 
     @Override
-    public ParentVO selectParent() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String currentUserName = userDetails.getUsername();
-
-//      parent VO 찾아서 아이디 찾기
-        ParentVO parent = parentMapper.selectOne(currentUserName);
-
-        return parentMapper.selectParent(parent.getParentNumber());
+    public ParentVO selectParent(Long parentNumber) {
+        return null;
     }
 }

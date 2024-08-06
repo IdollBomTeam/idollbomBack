@@ -12,7 +12,7 @@
     <insert id="insert">
         insert into PRO (PRO_NUMBER, PRO_EMAIL, PRO_PASSWORD, PRO_NAME, PRO_NICKNAME, PRO_PHONE_NUMBER, PRO_ADDRESS, PRO_PROFILE_IMAGE_URL,
                          PRO_FILE, PRO_INTRO, ROLE)
-        values (SEQ_PROJECT.NEXTVAL, #{proEmail}, #{proPassword}, #{proName}, #{proNickname}, #{proPhoneNumber}, #{proAddress}, #{proProfileImageUrl} ,#{proFile}, #{proIntro}, 'pro')
+        values (SEQ_PROJECT.NEXTVAL, #{proEmail}, #{proPassword}, #{proName}, #{proNickName}, #{proPhoneNumber}, #{proAddress}, #{proProfileImageUrl} ,#{proFile}, #{proIntro}, 'pro')
     </insert>
 
     <!-- 비밀번호 변경   -->

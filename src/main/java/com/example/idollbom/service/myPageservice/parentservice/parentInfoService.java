@@ -15,5 +15,5 @@ public interface parentInfoService {
 
     public void updatePassword(String password);
 
-    public ParentVO selectParent();
+    public ParentVO selectParent(Long parentNumber);
 }
